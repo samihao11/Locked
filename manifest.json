@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "Focus Lock",
+    "version": "1.0",
+    "description": "Lock your browser to current tabs for a set time.",
+    "permissions": [
+      "tabs",
+      "scripting",
+      "webNavigation",
+      "activeTab"
+    ],
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "web_accessible_resources": [{
+      "resources": ["timer.html"],
+      "matches": ["<all_urls>"]
+    }],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["overlay.js"],
+        "run_at": "document_start",
+        "all_frames": false
+      }
+    ]
+  }
+  
